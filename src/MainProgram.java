@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class MainProgram {
 
+	private int numberOfDisks;
 	
 	public static void main(String[] args)	{
 		Scanner percepts= new Scanner(System.in);
