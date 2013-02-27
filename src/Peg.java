@@ -39,6 +39,30 @@ public class Peg {
 		return position+numDisk+diskSize;
 	}
 	
+	public boolean equals(Object o)	{
+		Peg p=(Peg)o;
+		boolean found=false;
+		if(this.position==p.position)	{
+			if(this.disks.size()==p.disks.size())	{
+				for(int i=0;i<this.disks.size() && !found;i++)	{
+					if(!(this.disks.get(i).equals(p.disks.get(i))))	{
+						found=true;
+					}
+				}
+				
+				if(found)	{
+					return false;
+				} else	{
+					return true;
+				}
+			} else	{
+				return false;
+			}
+		} else	{
+			return false;
+		}
+	}
+	
 	
 	
 }

@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 
+import es.deusto.ingenieria.is.search.formulation.State;
 
-public class Environment {
+
+public class Environment extends State	{
 
 	private Peg origin;
 	private Peg destination;
@@ -30,6 +32,32 @@ public class Environment {
 				restPegs=restPegs + pegs.get(i).toString();
 		}
 		return number+originPeg+destinationPeg+restPegs;
+	}
+
+	public boolean equals(Object o) {
+		Environment e = (Environment)o;
+		boolean found=false;
+		if(this.pegs.size()==e.pegs.size())	{
+			if(this.origin.equals(e.origin) && this.destination.equals(e.destination))	{
+				for(int i=0;i<pegs.size();i++)	{
+					if(!(this.pegs.get(i).getPosition()==this.origin.getPosition() || this.pegs.get(i).getPosition()==this.destination.getPosition()))	{
+						if(!(this.pegs.get(i).equals(e.pegs.get(i))))	{
+							found=true;
+						}
+					}
+				}
+				
+				if(found)	{
+					return false;
+				} else	{
+					return true;
+				}
+			} else	{
+				return false;
+			}
+		}	else	{
+			return false;
+		}		
 	}
 	
 }

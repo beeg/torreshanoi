@@ -20,4 +20,12 @@ public class Disk {
 		return "Disk size: "+size+"\n";
 	}
 	
+	public boolean equals(Object o)	{
+		Disk d=(Disk)o;
+		if(this.size==d.size)	{
+			return true;
+		} else	{
+			return false;
+		}
+	}
 }
