@@ -35,29 +35,54 @@ public class Environment extends State	{
 	}
 
 	public boolean equals(Object o) {
-		Environment e = (Environment)o;
-		boolean found=false;
-		if(this.pegs.size()==e.pegs.size())	{
-			if(this.origin.equals(e.origin) && this.destination.equals(e.destination))	{
-				for(int i=0;i<pegs.size();i++)	{
-					if(!(this.pegs.get(i).getPosition()==this.origin.getPosition() || this.pegs.get(i).getPosition()==this.destination.getPosition()))	{
+		if(o!=null && o.getClass()==this.getClass())	{
+			Environment e = (Environment)o;
+			if(this.pegs.size()==e.pegs.size())	{ //Equals on number of pegs
+				if(this.origin.equals(e.origin) && this.destination.equals(e.destination))	{
+					boolean different=false;
+					for(int i=0;i<this.pegs.size()&&!different;i++)	{
 						if(!(this.pegs.get(i).equals(e.pegs.get(i))))	{
-							found=true;
+							different=true;
 						}
 					}
-				}
-				
-				if(found)	{
-					return false;
+					if(different)	{
+						return false;
+					} else	{
+						return true;
+					}
 				} else	{
-					return true;
+					return false;
 				}
 			} else	{
 				return false;
 			}
-		}	else	{
+		} else 	{
 			return false;
-		}		
+		}
+	}
+
+	public Peg getOrigin() {
+		return origin;
+	}
+
+	public void setOrigin(Peg origin) {
+		this.origin = origin;
+	}
+
+	public Peg getDestination() {
+		return destination;
+	}
+
+	public void setDestination(Peg destination) {
+		this.destination = destination;
+	}
+
+	public ArrayList<Peg> getPegs() {
+		return pegs;
+	}
+
+	public void setPegs(ArrayList<Peg> pegs) {
+		this.pegs = pegs;
 	}
 	
 }

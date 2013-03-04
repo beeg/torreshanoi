@@ -21,9 +21,13 @@ public class Disk {
 	}
 	
 	public boolean equals(Object o)	{
-		Disk d=(Disk)o;
-		if(this.size==d.size)	{
-			return true;
+		if(o!=null && o.getClass()==this.getClass())	{
+			Disk d=(Disk)o;
+			if(this.size==d.size)	{
+				return true;
+			} else	{
+				return false;
+			}
 		} else	{
 			return false;
 		}

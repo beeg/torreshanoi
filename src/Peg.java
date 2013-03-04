@@ -40,20 +40,22 @@ public class Peg {
 	}
 	
 	public boolean equals(Object o)	{
-		Peg p=(Peg)o;
-		boolean found=false;
-		if(this.position==p.position)	{
-			if(this.disks.size()==p.disks.size())	{
-				for(int i=0;i<this.disks.size() && !found;i++)	{
-					if(!(this.disks.get(i).equals(p.disks.get(i))))	{
-						found=true;
+		if(o!=null && o.getClass()==this.getClass())	{
+			Peg p=(Peg)o;
+			if(this.position==p.position)	{
+				if(this.disks.size()==p.disks.size())	{
+					boolean different=false;
+					for(int i=0;i<this.disks.size()&&!different;i++)	{
+						if(!(this.disks.get(i).equals(p.disks.get(i))))	{
+							different=true;
+						}
 					}
-				}
-				
-				if(found)	{
-					return false;
+					if(different)
+						return false;
+					else
+						return true;
 				} else	{
-					return true;
+					return false;
 				}
 			} else	{
 				return false;
