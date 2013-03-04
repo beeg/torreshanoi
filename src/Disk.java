@@ -16,10 +16,15 @@ public class Disk {
 		this.size = size;
 	}
 	
+	
 	public String toString()	{
 		return "Disk size: "+size+"\n";
 	}
 	
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	public boolean equals(Object o)	{
 		if(o!=null && o.getClass()==this.getClass())	{
 			Disk d=(Disk)o;
