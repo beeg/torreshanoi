@@ -14,18 +14,14 @@ public class MoveOperator extends Operator{
 	}
 
 	protected State effect(State arg0) {
-		if(arg0!=null)	{
+		if(arg0!=null && arg0.getClass().equals(Environment.class))	{
 			Environment e=(Environment)arg0;
 			Peg origin=e.getPegs().get(this.origin.getPosition());
 			Peg destination=e.getPegs().get(this.destination.getPosition());
-			if(destination.getDisks().isEmpty())	{
-				return null;
-			} else	{
-				
-			}
-			
-			
-			return null;
+			destination.getDisks().push(origin.getDisks().pop());
+			e.setPeg(origin.getPosition(), origin);
+			e.setPeg(destination.getPosition(), destination);
+			return e;
 		} else	{
 			return null;
 		}		

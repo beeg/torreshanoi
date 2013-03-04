@@ -85,4 +85,8 @@ public class Environment extends State	{
 		this.pegs = pegs;
 	}
 	
+	public void setPeg(int position,Peg peg)	{
+		this.pegs.set(position, peg);
+	}
+	
 }
