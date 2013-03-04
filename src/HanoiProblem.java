@@ -25,7 +25,11 @@ public class HanoiProblem extends Problem	{
 	}
 	
 	public void createOperators()	{
-		
+		for(int j=0;j<numberOfPegs;j++)	{
+			for(int i=0;i<numberOfPegs;i++)	{
+				this.addOperator(new MoveOperator(j,i));
+			}
+		}
 	}
 
 }

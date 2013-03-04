@@ -4,10 +4,10 @@ import es.deusto.ingenieria.is.search.formulation.State;
 
 public class MoveOperator extends Operator{
 
-	private Peg origin;
-	private Peg destination;
-	
-	public MoveOperator(Peg origin, Peg destination) {
+	private int origin;
+	private int destination;
+
+	public MoveOperator(int origin, int destination) {
 		super();
 		this.origin = origin;
 		this.destination = destination;
@@ -16,8 +16,8 @@ public class MoveOperator extends Operator{
 	protected State effect(State arg0) {
 		if(arg0!=null && arg0.getClass().equals(Environment.class))	{
 			Environment e=(Environment)arg0;
-			Peg origin=e.getPegs().get(this.origin.getPosition());
-			Peg destination=e.getPegs().get(this.destination.getPosition());
+			Peg origin=e.getPegs().get(this.origin);
+			Peg destination=e.getPegs().get(this.destination);
 			destination.getDisks().push(origin.getDisks().pop());
 			e.setPeg(origin.getPosition(), origin);
 			e.setPeg(destination.getPosition(), destination);
@@ -30,8 +30,8 @@ public class MoveOperator extends Operator{
 	protected boolean isApplicable(State arg0) {
 		if(arg0!=null && arg0.getClass().equals(Environment.class))	{
 			Environment e=(Environment)arg0;
-			Peg origin=e.getPegs().get(this.origin.getPosition());
-			Peg destination=e.getPegs().get(this.destination.getPosition());
+			Peg origin=e.getPegs().get(this.origin);
+			Peg destination=e.getPegs().get(this.destination);
 			if(origin.getDisks().isEmpty())	{
 				return false;
 			} else	{
