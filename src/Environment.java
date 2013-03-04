@@ -35,7 +35,7 @@ public class Environment extends State	{
 	}
 
 	public boolean equals(Object o) {
-		if(o!=null && o.getClass()==this.getClass())	{
+		if(o!=null && o.getClass().equals(this.getClass()))	{
 			Environment e = (Environment)o;
 			if(this.pegs.size()==e.pegs.size())	{ //Equals on number of pegs
 				if(this.origin.equals(e.origin) && this.destination.equals(e.destination))	{

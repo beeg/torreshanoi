@@ -19,9 +19,9 @@ public class MoveOperator extends Operator{
 			Peg origin=e.getPegs().get(this.origin.getPosition());
 			Peg destination=e.getPegs().get(this.destination.getPosition());
 			if(destination.getDisks().isEmpty())	{
-				return true;
+				return null;
 			} else	{
-				return false; ////
+				
 			}
 			
 			
@@ -34,10 +34,23 @@ public class MoveOperator extends Operator{
 	protected boolean isApplicable(State arg0) {
 		if(arg0!=null && arg0.getClass().equals(Environment.class))	{
 			Environment e=(Environment)arg0;
-			Peg origin=e.getPegs().
-			
-			
-			return false;
+			Peg origin=e.getPegs().get(this.origin.getPosition());
+			Peg destination=e.getPegs().get(this.destination.getPosition());
+			if(origin.getDisks().isEmpty())	{
+				return false;
+			} else	{
+				if(destination.getDisks().isEmpty())	{
+					return true;
+				} else	{
+					Disk originDisk=origin.getDisks().peek();
+					Disk destinationDisk=destination.getDisks().peek();
+					if(originDisk.getSize()<destinationDisk.getSize())	{
+						return true;
+					} else	{
+						return false;
+					}
+				}
+			}
 		} else	{
 			return false;
 		}
