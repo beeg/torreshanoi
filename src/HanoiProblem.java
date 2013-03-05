@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 import es.deusto.ingenieria.is.search.formulation.Operator;
 import es.deusto.ingenieria.is.search.formulation.Problem;
 import es.deusto.ingenieria.is.search.formulation.State;
@@ -16,6 +14,12 @@ public class HanoiProblem extends Problem	{
 		this.numberOfDisks = numberOfDisks;
 	}
 
+
+	/* (non-Javadoc)
+	 * @see es.deusto.ingenieria.is.search.formulation.Problem#isFinalState(es.deusto.ingenieria.is.search.formulation.State)
+	 *	 
+	 *This method comfirm if the state given is a final state (if it´s the destination peg)
+	 */
 	public boolean isFinalState(State state)	{
 		if(state!=null && state.getClass().equals(Environment.class))	{
 			Environment e=(Environment)state;
@@ -35,7 +39,7 @@ public class HanoiProblem extends Problem	{
 	}
 	
 	/**
-	 * Creates all the possible operators
+	 * Creates all the possible movements for each pair of Pegs
 	 */
 	public void createOperators()	{
 		for(int j=0;j<numberOfPegs;j++)	{
@@ -77,6 +81,26 @@ public class HanoiProblem extends Problem	{
 		return operator;
 	}
 	
+	public int getNumberOfPegs() {
+		return numberOfPegs;
+	}
+
+
+	public void setNumberOfPegs(int numberOfPegs) {
+		this.numberOfPegs = numberOfPegs;
+	}
+
+
+	public int getNumberOfDisks() {
+		return numberOfDisks;
+	}
+
+
+	public void setNumberOfDisks(int numberOfDisks) {
+		this.numberOfDisks = numberOfDisks;
+	}
+
+
 	public static void main(String[] args)	{
 		//Creating a environment with these characteristics:
 		//Number of pegs: 3

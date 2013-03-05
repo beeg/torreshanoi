@@ -25,10 +25,6 @@ public class Peg {
 		this.disks = disks;
 	}
 	
-	public void addDisk(Disk d)	{
-		this.disks.push(d);
-	}
-	
 	public String toString()	{
 		String position = "Peg's position: "+(this.position+1)+"\n";
 		String numDisk = "Number of disks: "+disks.size()+"\n";
@@ -43,6 +39,7 @@ public class Peg {
 		if(o!=null && o.getClass()==this.getClass())	{
 			Peg p=(Peg)o;
 			if(this.position==p.position)	{
+				//Checks if the number of disks is the same
 				if(this.disks.size()==p.disks.size())	{
 					boolean different=false;
 					for(int i=0;i<this.disks.size()&&!different;i++)	{
@@ -65,28 +62,48 @@ public class Peg {
 		}
 	}
 	
+	/**
+	 * Gets the top disk of the stack without popping it
+	 * @return
+	 */
 	public Disk getPeek()	{
-		return disks.peek();
+		return this.disks.peek();
 	}
 	
+	/**
+	 * Gets the size of the stack of disks
+	 * @return
+	 */
 	public int getSize()	{
-		return disks.size();
+		return this.disks.size();
 	}
 	
+	/**
+	 * Checks if the stack of disks is empty
+	 * @return
+	 */
 	public boolean isEmpty()	{
-		return disks.isEmpty();
+		return this.disks.isEmpty();
 	}
 	
+	/**
+	 * Inserts a new disk into the stack
+	 * @param d
+	 */
 	public void push(Disk d)	{
-		disks.push(d);
+		this.disks.push(d);
 	}
 	
+	/**
+	 * Takes the disk from the stack
+	 * @return
+	 */
 	public Disk pop()	{
-		return disks.pop();
+		return this.disks.pop();
 	}
 	
 	public void clear()	{
-		disks.clear();
+		this.disks.clear();
 	}
 	
 }

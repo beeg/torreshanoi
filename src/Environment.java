@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Stack;
 
 import es.deusto.ingenieria.is.search.formulation.State;
 
@@ -20,32 +21,42 @@ public class Environment extends State implements Cloneable	{
 	public Environment(int numPegs, int origin, int dest, int numDisks)	{
 		//Allocating space for the pegs
 		this.pegs = new ArrayList<Peg>(numPegs);
-		//adding all pegs
+		//Adding all pegs
 		for(int i=0;i<numPegs;i++)	{
 			this.pegs.add(new Peg(i));
 		}
 		this.origin=this.pegs.get(origin-1);
 		this.destination=this.pegs.get(dest-1);
-		//adding all disks on the origin peg
+		//Adding all disks on the origin peg
 		for(int i=0;i<numDisks;i++)	{
-			this.origin.addDisk(new Disk(numDisks-i));
+			this.origin.push(new Disk(numDisks-i));
 		}
 	}
 	
-	//Just for testing
-	//It creates the final state directly
+	public Environment()	{
+		this.origin=null;
+		this.destination=null;
+		this.pegs=new ArrayList<Peg>();
+	}
+	
+	/**
+	 * Just for testing, it creates the final state directly
+	 * @param e
+	 * @param numPegs
+	 * @param numDisks
+	 */
 	public Environment(Environment e,int numPegs,int numDisks)	{
 		//Allocating space for the pegs
 		this.pegs = new ArrayList<Peg>(numPegs);
-		//adding all pegs
+		//Adding all pegs
 		for(int i=0;i<numPegs;i++)	{
 			this.pegs.add(new Peg(i));
 		}
 		this.origin=this.pegs.get(e.getOrigin().getPosition());
 		this.destination=this.pegs.get(e.getDestination().getPosition());
-		//adding all disks on the origin peg
+		//Adding all disks on the origin peg
 		for(int i=0;i<numDisks;i++)	{
-			this.destination.addDisk(new Disk(numDisks-i));
+			this.destination.push(new Disk(numDisks-i));
 		}
 	}
 	
@@ -135,6 +146,10 @@ public class Environment extends State implements Cloneable	{
 		this.pegs.set(position, peg);
 	}
 	
+	public void setDisk(int pegPosition, Stack<Disk> stack)	{
+		this.pegs.get(pegPosition).setDisks(stack);
+	}
+	
 	public int getSize(Peg p)	{
 		return p.getSize();
 	}
@@ -143,19 +158,28 @@ public class Environment extends State implements Cloneable	{
 		return this.origin.getSize();
 	}
 	
+	public int getOriginPos()	{
+		return this.origin.getPosition();
+	}
+	
+	public int getDestSize()	{
+		return this.destination.getSize();
+	}
+	
+	public int getDestPos()	{
+		return this.destination.getPosition();
+	}
+	
 	public void clearPeg(Peg p)	{
 		p.clear();
 	}
 	
 	protected Object clone()	{
-		Object o=null;
-		try {			
-			o=super.clone();
-		} catch (CloneNotSupportedException e) {
-			System.out.println("The object cannot be cloned.");
-			e.printStackTrace();
-		}		
-		return o;
+		Environment e = new Environment(pegs.size(),origin.getPosition()+1,destination.getPosition()+1,0);
+		for(int i=0;i<e.getNumPegs();i++)	{
+			e.setDisk(i, (Stack<Disk>)this.getPeg(i).getDisks().clone());
+		}
+		return e;
 	}
 
 }

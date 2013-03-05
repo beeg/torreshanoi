@@ -14,12 +14,19 @@ public class MoveOperator extends Operator{
 		this.destination = destination;
 	}
 
+	/* (non-Javadoc)
+	 * @see es.deusto.ingenieria.is.search.formulation.Operator#effect(es.deusto.ingenieria.is.search.formulation.State)
+	 * 
+	 * Applys the changes of making the movement to the operator
+	 */
 	protected State effect(State arg0) {
 		if(arg0!=null && arg0.getClass().equals(Environment.class))	{
 			Environment e=(Environment)arg0;
 			Peg origin=e.getPeg(this.origin);
 			Peg destination=e.getPeg(this.destination);
+			//Getting the origin top disk and adding it to the destination peg
 			destination.push(origin.pop());
+			//Reallocating pegs
 			e.setPeg(this.origin, origin);
 			e.setPeg(this.destination, destination);
 			return (Environment) e.clone();
@@ -28,21 +35,30 @@ public class MoveOperator extends Operator{
 		}		
 	}
 
+	/* (non-Javadoc)
+	 * @see es.deusto.ingenieria.is.search.formulation.Operator#isApplicable(es.deusto.ingenieria.is.search.formulation.State)
+	 * 
+	 * This method indicates if the movement is applicable in the given state
+	 */
 	protected boolean isApplicable(State arg0) {
 		if(arg0!=null && arg0.getClass().equals(Environment.class))	{
 			Environment e=(Environment)arg0;			
 			Peg origin=e.getPeg(this.origin);
 			Peg destination=e.getPeg(this.destination);
+			//Checking if the origin peg is not empty, in other words, if we are taking a disk
 			if(origin.isEmpty())	{
 				System.out.println("This movement is not applicable");
 				return false;
 			} else	{
+				//Checking if the destination peg is empty
 				if(destination.isEmpty())	{
 					System.out.println("This movement is applicable");
 					return true;
 				} else	{
+					//Gets the top disk from the pegs, without popping it from the stack
 					Disk originDisk=origin.getPeek();
 					Disk destinationDisk=destination.getPeek();
+					//Checking if the selected disk is smaller than the one that is already at the top
 					if(originDisk.getSize()<destinationDisk.getSize())	{
 						System.out.println("This movement is applicable");
 						return true;
