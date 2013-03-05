@@ -102,6 +102,9 @@ public class Peg {
 		return this.disks.pop();
 	}
 	
+	/**
+	 * Empties the stack of disk
+	 */
 	public void clear()	{
 		this.disks.clear();
 	}

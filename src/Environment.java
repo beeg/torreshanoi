@@ -33,12 +33,6 @@ public class Environment extends State implements Cloneable	{
 		}
 	}
 	
-	public Environment()	{
-		this.origin=null;
-		this.destination=null;
-		this.pegs=new ArrayList<Peg>();
-	}
-	
 	/**
 	 * Just for testing, it creates the final state directly
 	 * @param e

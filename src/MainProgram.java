@@ -41,8 +41,9 @@ public class MainProgram {
 		HanoiProblem p = new HanoiProblem(e.getNumPegs(),e.getOriginSize());
 		p.addInitialState(e);
 		p.createOperators();
-		int originP= new Random(p.getOperators().size()).nextInt();
-		int destP=new Random(p.getOperators().size()).nextInt();
+		Random random= new Random();
+		int originP= random.nextInt(p.getNumberOfPegs());
+		int destP=random.nextInt(p.getNumberOfPegs());
 		MoveOperator move=(MoveOperator)p.getOperator(originP, destP);
 		System.out.println(move.toString());
 		Environment auxEnv = (Environment)move.apply(e);
@@ -54,8 +55,9 @@ public class MainProgram {
 		
 		
 		//New random movement
-		originP=new Random(p.getOperators().size()).nextInt();
-		destP=new Random(p.getOperators().size()).nextInt();
+		System.out.println("\nNew Movement");
+		originP=random.nextInt(p.getNumberOfPegs());
+		destP=random.nextInt(p.getNumberOfPegs());
 		move=(MoveOperator)p.getOperator(originP, destP);
 		System.out.println(move.toString());
 		auxEnv = (Environment)move.apply(e);
@@ -67,8 +69,8 @@ public class MainProgram {
 		
 		
 		//New random movement
-		originP=new Random(p.getOperators().size()).nextInt();
-		destP=new Random(p.getOperators().size()).nextInt();
+		originP=random.nextInt(p.getNumberOfPegs());
+		destP=random.nextInt(p.getNumberOfPegs());
 		move=(MoveOperator)p.getOperator(originP, destP);
 		System.out.println(move.toString());
 		auxEnv = (Environment)move.apply(e);
@@ -89,7 +91,7 @@ public class MainProgram {
 		//Origin peg: 1
 		//Destination peg: 2
 		//Number of disks: 3
-		System.out.println("New environment");
+		System.out.println("\nNew environment");
 		Environment env = new Environment(3,1,2,3);
 		System.out.println(env.toString());
 		HanoiProblem problem = new HanoiProblem(env.getNumPegs(),env.getOriginSize());

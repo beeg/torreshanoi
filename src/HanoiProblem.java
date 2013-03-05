@@ -75,9 +75,9 @@ public class HanoiProblem extends Problem	{
 		for(int i=0;i<this.getOperators().size()&&!found;i++)	{
 			operator=(MoveOperator)this.getOperators().get(i);
 			if(operator.getOrigin()==origin && operator.getDestination()==destination)	{
-				found=true;
+				found=true;				
 			}
-		}
+		}		
 		return operator;
 	}
 	
