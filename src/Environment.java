@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import es.deusto.ingenieria.is.search.formulation.State;
 
 
-public class Environment extends State	{
+public class Environment extends State implements Cloneable	{
 
 	private Peg origin;
 	private Peg destination;
@@ -32,6 +32,22 @@ public class Environment extends State	{
 		}
 	}
 	
+	//Just for testing
+	//It creates the final state directly
+	public Environment(Environment e,int numPegs,int numDisks)	{
+		//Allocating space for the pegs
+		this.pegs = new ArrayList<Peg>(numPegs);
+		//adding all pegs
+		for(int i=0;i<numPegs;i++)	{
+			this.pegs.add(new Peg(i));
+		}
+		this.origin=this.pegs.get(e.getOrigin().getPosition());
+		this.destination=this.pegs.get(e.getDestination().getPosition());
+		//adding all disks on the origin peg
+		for(int i=0;i<numDisks;i++)	{
+			this.destination.addDisk(new Disk(numDisks-i));
+		}
+	}
 	
 	/* (non-Javadoc)
 	 * @see es.deusto.ingenieria.is.search.formulation.State#toString()
@@ -107,8 +123,39 @@ public class Environment extends State	{
 		this.pegs = pegs;
 	}
 	
+	public int getNumPegs()	{
+		return pegs.size();
+	}
+	
+	public Peg getPeg(int position)	{
+		return pegs.get(position);
+	}
+	
 	public void setPeg(int position,Peg peg)	{
 		this.pegs.set(position, peg);
 	}
 	
+	public int getSize(Peg p)	{
+		return p.getSize();
+	}
+	
+	public int getOriginSize()	{
+		return this.origin.getSize();
+	}
+	
+	public void clearPeg(Peg p)	{
+		p.clear();
+	}
+	
+	protected Object clone()	{
+		Object o=null;
+		try {			
+			o=super.clone();
+		} catch (CloneNotSupportedException e) {
+			System.out.println("The object cannot be cloned.");
+			e.printStackTrace();
+		}		
+		return o;
+	}
+
 }

@@ -65,6 +65,28 @@ public class Peg {
 		}
 	}
 	
+	public Disk getPeek()	{
+		return disks.peek();
+	}
 	
+	public int getSize()	{
+		return disks.size();
+	}
+	
+	public boolean isEmpty()	{
+		return disks.isEmpty();
+	}
+	
+	public void push(Disk d)	{
+		disks.push(d);
+	}
+	
+	public Disk pop()	{
+		return disks.pop();
+	}
+	
+	public void clear()	{
+		disks.clear();
+	}
 	
 }

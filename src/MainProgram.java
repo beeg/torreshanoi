@@ -31,10 +31,14 @@ public class MainProgram {
 		Environment env2 = new Environment(numPegs2,origin2,destination2,numDisks2);
 		
 		if(env.equals(env2))	{
-			System.out.println("Iguales");
+			System.out.println("Both environments are equals.");
 		} else	{
-			System.out.println("Diferentes");
+			System.out.println("The environments are different.");
 		}*/
+		
+		HanoiProblem problem = new HanoiProblem(env.getPegs().size(),env.getOrigin().getDisks().size());
+		problem.createOperators();
+		
 		
 	}
 	
