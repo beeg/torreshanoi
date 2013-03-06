@@ -1,6 +1,9 @@
 import java.util.Random;
 import java.util.Scanner;
 
+import es.deusto.ingenieria.is.search.algorithms.Node;
+import es.deusto.ingenieria.is.search.algorithms.blind.BreadthFS;
+
 
 public class MainProgram {
 	
@@ -133,6 +136,10 @@ public class MainProgram {
 		Environment finalEnv=new Environment((Environment)env,problem.getNumberOfPegs(),problem.getNumberOfDisks());
 		System.out.println(finalEnv.toString());
 		System.out.println(problem.toString(problem.isFinalState(finalEnv)));
+		
+		
+		BreadthFS breadth = BreadthFS.getInstance();
+		Node finalNode = breadth.search(problem, problem.getInitialStates().get(0));
 	}
 	
 }

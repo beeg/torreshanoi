@@ -9,7 +9,7 @@ public class MoveOperator extends Operator{
 	private int destination;
 
 	public MoveOperator(int origin, int destination) {
-		super();
+		super("From "+origin+" to "+destination);
 		this.origin = origin;
 		this.destination = destination;
 	}
