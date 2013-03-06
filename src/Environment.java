@@ -171,7 +171,8 @@ public class Environment extends State implements Cloneable	{
 	protected Object clone()	{
 		Environment e = new Environment(pegs.size(),origin.getPosition()+1,destination.getPosition()+1,0);
 		for(int i=0;i<e.getNumPegs();i++)	{
-			e.setDisk(i, (Stack<Disk>)this.getPeg(i).getDisks().clone());
+			e.setPeg(i, (Peg)this.pegs.get(i).clone());
+			//e.setDisk(i, (Stack<Disk>)this.getPeg(i).getDisks().clone());
 		}
 		return e;
 	}

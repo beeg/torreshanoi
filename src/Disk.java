@@ -1,5 +1,5 @@
 
-public class Disk {
+public class Disk implements Cloneable{
 
 	private int size;
 
@@ -31,5 +31,10 @@ public class Disk {
 		} else	{
 			return false;
 		}
+	}
+	protected Object clone(){
+		Disk d = new Disk(size);
+		return d;
+		
 	}
 }

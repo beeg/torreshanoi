@@ -1,7 +1,7 @@
 import java.util.Stack;
 
 
-public class Peg {
+public class Peg implements Cloneable{
 
 	private int position;
 	private Stack<Disk> disks;
@@ -109,4 +109,11 @@ public class Peg {
 		this.disks.clear();
 	}
 	
+	protected Object clone(){
+		Peg p = new Peg(position);
+		for(int i=0; i<p.getSize();i++){
+			p.getDisks().set(i, (Disk)this.disks.get(i).clone());
+		}
+		return p;
+	}
 }
