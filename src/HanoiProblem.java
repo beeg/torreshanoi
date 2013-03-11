@@ -113,6 +113,7 @@ public class HanoiProblem extends Problem	{
 	public void solve(SearchMethod arg0)	{
 		if(arg0!=null)	{
 			Node node=arg0.search(this, this.getInitialState());
+			System.out.println("Total movements: "+node.getDepth());
 			ArrayList<String> path = new ArrayList<String>();
 			arg0.solutionPath(node,path);
 			arg0.createSolutionLog(path);

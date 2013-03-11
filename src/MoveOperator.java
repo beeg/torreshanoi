@@ -53,12 +53,12 @@ public class MoveOperator extends Operator{
 			Peg destination=e.getPeg(this.destination);
 			//Checking if the origin peg is not empty, in other words, if we are taking a disk
 			if(origin.isEmpty())	{
-				System.out.println("This movement is not applicable");
+				//System.out.println("This movement is not applicable");
 				return false;
 			} else	{
 				//Checking if the destination peg is empty
 				if(destination.isEmpty())	{
-					System.out.println("This movement is applicable");
+					//System.out.println("This movement is applicable");
 					return true;
 				} else	{
 					//Gets the top disk from the pegs, without popping it from the stack
@@ -66,10 +66,10 @@ public class MoveOperator extends Operator{
 					Disk destinationDisk=destination.getPeek();
 					//Checking if the selected disk is smaller than the one that is already at the top
 					if(originDisk.getSize()<destinationDisk.getSize())	{
-						System.out.println("This movement is applicable");
+						//System.out.println("This movement is applicable");
 						return true;
 					} else	{
-						System.out.println("This movement is not applicable");
+						//System.out.println("This movement is not applicable");
 						return false;
 					}
 				}

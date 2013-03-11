@@ -3,12 +3,14 @@ import java.util.Scanner;
 
 import es.deusto.ingenieria.is.search.algorithms.Node;
 import es.deusto.ingenieria.is.search.algorithms.blind.BreadthFS;
+import es.deusto.ingenieria.is.search.algorithms.blind.DepthFS;
+import es.deusto.ingenieria.is.search.formulation.State;
 
 
 public class MainProgram {
 	
 	public static void main(String[] args)	{
-		Scanner percepts= new Scanner(System.in);
+		/*Scanner percepts= new Scanner(System.in);
 		System.out.println("Environment 1");
 		System.out.println("Enter number of pegs (> 3): ");
 		int numPegs = percepts.nextInt();
@@ -135,11 +137,28 @@ public class MainProgram {
 		System.out.println("\nFinal State");
 		Environment finalEnv=new Environment((Environment)env,problem.getNumberOfPegs(),problem.getNumberOfDisks());
 		System.out.println(finalEnv.toString());
-		System.out.println(problem.toString(problem.isFinalState(finalEnv)));
+		System.out.println(problem.toString(problem.isFinalState(finalEnv)));*/
 		
 		
+		Environment environment = new Environment(3,1,3,4);
+		HanoiProblem hanoi = new HanoiProblem(3,4);
+		hanoi.addInitialState(environment);
+		//BFS test
+		System.out.println("BFS test: ");
 		BreadthFS breadth = BreadthFS.getInstance();
-		Node finalNode = breadth.search(problem, problem.getInitialStates().get(0));
+		Long BFSpreviousTime = System.currentTimeMillis();
+		hanoi.solve(breadth);
+		Long BFSduration = System.currentTimeMillis() - BFSpreviousTime;
+		System.out.println("BFS duration: "+ BFSduration);
+		
+		//DFS test
+		System.out.println("DFS test: ");
+		Long DFSpreviousTime = System.currentTimeMillis();
+		DepthFS depth = DepthFS.getInstance();
+		hanoi.solve(depth);	
+		Long DFSduration = System.currentTimeMillis() - DFSpreviousTime;
+		System.out.println("DFS duration: "+ DFSduration);
+		
 	}
 	
 }
