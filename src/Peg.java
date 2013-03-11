@@ -21,8 +21,13 @@ public class Peg implements Cloneable{
 	public Stack<Disk> getDisks() {
 		return disks;
 	}
+	
 	public void setDisks(Stack<Disk> disks) {
 		this.disks = disks;
+	}
+	
+	public Disk getDisk(int position)	{
+		return this.disks.get(position);
 	}
 	
 	public String toString()	{
@@ -109,11 +114,45 @@ public class Peg implements Cloneable{
 		this.disks.clear();
 	}
 	
-	protected Object clone(){
+	/*protected Object clone(){
 		Peg p = new Peg(position);
 		for(int i=0; i<p.getSize();i++){
-			p.getDisks().set(i, (Disk)this.disks.get(i).clone());
+			//p.getDisks().set(i, (Disk)this.disks.get(i).clone());
+			p.push((Disk)this.getDisk(i).clone());
+		}
+		System.out.println("+++++++++++++++++++++clone");
+		System.out.println(p.toString());
+		return p;
+	}*/
+	
+	public Peg clone()	{
+		Peg p = new Peg(this.position);
+		for(int i=0;i<this.getSize();i++)	{
+			p.push((Disk)this.getDisk(i).clone());
 		}
 		return p;
+	}
+	
+	public static void main(String[] args)	{
+		Peg p1 = new Peg(1);
+		for(int i=0;i<5;i++)	{
+			p1.push(new Disk(5-i));
+		}
+		System.out.println("First peg: ");
+		System.out.println(p1.toString());
+		
+		//Peg cloned
+		Peg p2 = (Peg)p1.clone();
+		p2.pop();
+		p2.pop();
+		p2.setPosition(3);
+		System.out.println("\nTwo disks have benn popped and position has been set to 3");
+		System.out.println("\nCloned peg:");
+		System.out.println(p2.toString());
+		
+		//Checking the previous peg hasn't been changed
+		System.out.println("\nPrevious peg:");
+		System.out.println(p1.toString());
+		
 	}
 }

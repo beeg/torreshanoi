@@ -21,15 +21,21 @@ public class MoveOperator extends Operator{
 	 */
 	protected State effect(State arg0) {
 		if(arg0!=null && arg0.getClass().equals(Environment.class))	{
-			Environment e=(Environment)arg0;
-			Peg origin=e.getPeg(this.origin);
-			Peg destination=e.getPeg(this.destination);
+			Environment envTemp=(Environment) ((Environment)arg0).clone();
+			Peg originMove=envTemp.getPeg(this.origin);
+			Peg destinationMove=envTemp.getPeg(this.destination);
 			//Getting the origin top disk and adding it to the destination peg
-			destination.push(origin.pop());
+			destinationMove.push(originMove.pop());
 			//Reallocating pegs
-			e.setPeg(this.origin, origin);
-			e.setPeg(this.destination, destination);
-			return (Environment) e.clone();
+			envTemp.setPeg(this.origin, originMove);
+			envTemp.setPeg(this.destination, destinationMove);
+			if(this.origin==envTemp.getOriginPos())	{
+				envTemp.setOrigin(originMove);
+			}
+			if(this.destination==envTemp.getDestPos())	{
+				envTemp.setDestination(destinationMove);
+			}
+			return envTemp;
 		} else	{
 			return null;
 		}		
@@ -99,11 +105,11 @@ public class MoveOperator extends Operator{
 		//Number of pegs: 3
 		//Origin peg: 1
 		//Destination peg: 2
-		//Number of disks: 3
-		Environment env = new Environment(3,1,2,3);
+		//Number of disks: 4
+		Environment env = new Environment(3,1,2,4);
 		System.out.println(env.toString());
 		
-		System.out.println("Movement from peg 1 to peg 2");
+		/*System.out.println("Movement from peg 1 to peg 2");
 		MoveOperator operator= new MoveOperator(0,1);
 		System.out.println(operator.toString());
 		
@@ -122,7 +128,15 @@ public class MoveOperator extends Operator{
 		if(operator.isApplicable(env))	{
 			env=(Environment)operator.effect(env);
 			System.out.println(env.toString());
-		}
+		}*/
+		
+		MoveOperator operator= new MoveOperator(0,1);
+		Environment envTemp = (Environment)operator.effect(env);
+		System.out.println("\nEnvironment cloned:");
+		System.out.println(envTemp);
+		
+		System.out.println("\nEnvironment previous:");
+		System.out.println(env);
 	}
 
 }

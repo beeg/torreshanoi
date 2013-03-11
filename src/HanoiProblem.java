@@ -1,3 +1,4 @@
+import es.deusto.ingenieria.is.search.algorithms.SearchMethod;
 import es.deusto.ingenieria.is.search.formulation.Operator;
 import es.deusto.ingenieria.is.search.formulation.Problem;
 import es.deusto.ingenieria.is.search.formulation.State;
@@ -44,8 +45,9 @@ public class HanoiProblem extends Problem	{
 	public void createOperators()	{
 		for(int j=0;j<numberOfPegs;j++)	{
 			for(int i=0;i<numberOfPegs;i++)	{
-				//Adds the operator to the list
-				this.addOperator(new MoveOperator(j,i));
+				//Adds the operator to the list, avoiding the movement from one peg to itself
+				if(j!=i)				
+					this.addOperator(new MoveOperator(j,i));
 			}
 		}
 	}
@@ -98,6 +100,10 @@ public class HanoiProblem extends Problem	{
 
 	public void setNumberOfDisks(int numberOfDisks) {
 		this.numberOfDisks = numberOfDisks;
+	}
+	
+	public void solve(SearchMethod arg0)	{
+		
 	}
 
 
