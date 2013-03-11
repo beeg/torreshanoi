@@ -110,12 +110,19 @@ public class HanoiProblem extends Problem	{
 		return this.getInitialStates().get(0);
 	}
 	
+	/**
+	 * @param arg0 Any search method (BFS, DFS ...)
+	 * 
+	 * Depending the search method it use one algorithim or other. 
+	 */
 	public void solve(SearchMethod arg0)	{
 		if(arg0!=null)	{
 			Node node=arg0.search(this, this.getInitialState());
 			System.out.println("Total movements: "+node.getDepth());
 			ArrayList<String> path = new ArrayList<String>();
+			//Solution path 
 			arg0.solutionPath(node,path);
+			//Creating a solution log (all moves)
 			arg0.createSolutionLog(path);
 		}
 	}
