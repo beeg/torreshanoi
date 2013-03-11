@@ -139,15 +139,15 @@ public class MainProgram {
 		System.out.println(finalEnv.toString());
 		System.out.println(problem.toString(problem.isFinalState(finalEnv)));*/
 		
-		
-		Environment environment = new Environment(3,1,3,4);
-		HanoiProblem hanoi = new HanoiProblem(3,4);
-		hanoi.addInitialState(environment);
+		System.out.println("3 pegs and 4 disks");
+		Environment env1 = new Environment(3,1,3,4);
+		HanoiProblem hanoiProblem1 = new HanoiProblem(3,4);
+		hanoiProblem1.addInitialState(env1);
 		//BFS test
 		System.out.println("BFS test: ");
 		BreadthFS breadth = BreadthFS.getInstance();
 		Long BFSpreviousTime = System.currentTimeMillis();
-		hanoi.solve(breadth);
+		hanoiProblem1.solve(breadth);
 		Long BFSduration = System.currentTimeMillis() - BFSpreviousTime;
 		System.out.println("BFS duration: "+ BFSduration);
 		
@@ -155,8 +155,56 @@ public class MainProgram {
 		System.out.println("DFS test: ");
 		Long DFSpreviousTime = System.currentTimeMillis();
 		DepthFS depth = DepthFS.getInstance();
-		hanoi.solve(depth);	
+		hanoiProblem1.solve(depth);	
 		Long DFSduration = System.currentTimeMillis() - DFSpreviousTime;
+		System.out.println("DFS duration: "+ DFSduration);
+		
+		
+		
+		//BFS optimos, estables
+		//DFS no optimos, varian segun origen y destino especificado
+		
+		
+		
+		System.out.println("\n3 pegs and 6 disks");
+		Environment env2 = new Environment(3,1,3,6);
+		HanoiProblem hanoiProblem2 = new HanoiProblem(3,6);
+		hanoiProblem2.addInitialState(env2);
+		//BFS test
+		System.out.println("BFS test: ");
+		breadth = BreadthFS.getInstance();
+		BFSpreviousTime = System.currentTimeMillis();
+		hanoiProblem2.solve(breadth);
+		BFSduration = System.currentTimeMillis() - BFSpreviousTime;
+		System.out.println("BFS duration: "+ BFSduration);
+		
+		//DFS test
+		System.out.println("DFS test: ");
+		DFSpreviousTime = System.currentTimeMillis();
+		depth = DepthFS.getInstance();
+		hanoiProblem2.solve(depth);	
+		DFSduration = System.currentTimeMillis() - DFSpreviousTime;
+		System.out.println("DFS duration: "+ DFSduration);
+		
+		
+		System.out.println("\n4 pegs and 6 disks");
+		Environment env3 = new Environment(4,1,3,6);
+		HanoiProblem hanoiProblem3 = new HanoiProblem(4,6);
+		hanoiProblem3.addInitialState(env3);
+		//BFS test
+		System.out.println("BFS test: ");
+		breadth = BreadthFS.getInstance();
+		BFSpreviousTime = System.currentTimeMillis();
+		hanoiProblem3.solve(breadth);
+		BFSduration = System.currentTimeMillis() - BFSpreviousTime;
+		System.out.println("BFS duration: "+ BFSduration);
+		
+		//DFS test
+		System.out.println("DFS test: ");
+		DFSpreviousTime = System.currentTimeMillis();
+		depth = DepthFS.getInstance();
+		hanoiProblem3.solve(depth);	
+		DFSduration = System.currentTimeMillis() - DFSpreviousTime;
 		System.out.println("DFS duration: "+ DFSduration);
 		
 	}

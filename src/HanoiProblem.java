@@ -30,7 +30,7 @@ public class HanoiProblem extends Problem	{
 			Environment e=(Environment)state;
 			//Checking if the pegs are empty, avoiding the destination
 			for(int i=0;i<e.getNumPegs();i++)	{
-				if(e.getDestination().getPosition()!=e.getPeg(i).getPosition())	{
+				if(e.getDestination()!=e.getPeg(i))	{
 					if(!(e.getPeg(i).isEmpty()))	{
 						return false;
 					}
