@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+
+import es.deusto.ingenieria.is.search.algorithms.Node;
 import es.deusto.ingenieria.is.search.algorithms.SearchMethod;
 import es.deusto.ingenieria.is.search.formulation.Operator;
 import es.deusto.ingenieria.is.search.formulation.Problem;
@@ -13,6 +16,7 @@ public class HanoiProblem extends Problem	{
 		super();
 		this.numberOfPegs = numberOfPegs;
 		this.numberOfDisks = numberOfDisks;
+		createOperators();
 	}
 
 
@@ -102,8 +106,17 @@ public class HanoiProblem extends Problem	{
 		this.numberOfDisks = numberOfDisks;
 	}
 	
+	public State getInitialState()	{
+		return this.getInitialStates().get(0);
+	}
+	
 	public void solve(SearchMethod arg0)	{
-		
+		if(arg0!=null)	{
+			Node node=arg0.search(this, this.getInitialState());
+			ArrayList<String> path = new ArrayList<String>();
+			arg0.solutionPath(node,path);
+			arg0.createSolutionLog(path);
+		}
 	}
 
 

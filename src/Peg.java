@@ -114,17 +114,6 @@ public class Peg implements Cloneable{
 		this.disks.clear();
 	}
 	
-	/*protected Object clone(){
-		Peg p = new Peg(position);
-		for(int i=0; i<p.getSize();i++){
-			//p.getDisks().set(i, (Disk)this.disks.get(i).clone());
-			p.push((Disk)this.getDisk(i).clone());
-		}
-		System.out.println("+++++++++++++++++++++clone");
-		System.out.println(p.toString());
-		return p;
-	}*/
-	
 	public Peg clone()	{
 		Peg p = new Peg(this.position);
 		for(int i=0;i<this.getSize();i++)	{
