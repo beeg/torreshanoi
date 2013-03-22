@@ -13,9 +13,7 @@ public class Heuristic1 extends EvaluationFunction{
 	@Override
 	public double calculateH(Node arg0) {
 		Environment e = (Environment)(arg0.getState());		
-		return e.getOrigin().getDisks().size();
-		
-		
+		return e.getOrigin().getDisks().size();		
 	}
 
 }

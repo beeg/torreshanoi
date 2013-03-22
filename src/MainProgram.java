@@ -4,6 +4,7 @@ import java.util.Scanner;
 import es.deusto.ingenieria.is.search.algorithms.Node;
 import es.deusto.ingenieria.is.search.algorithms.blind.BreadthFS;
 import es.deusto.ingenieria.is.search.algorithms.blind.DepthFS;
+import es.deusto.ingenieria.is.search.algorithms.heuristic.BestFS;
 import es.deusto.ingenieria.is.search.formulation.State;
 
 
@@ -148,7 +149,7 @@ public class MainProgram {
 		 * Destination peg: 3
 		 * 
 		 */
-		System.out.println("3 pegs and 4 disks");
+		/*System.out.println("3 pegs and 4 disks");
 		//creating the environment
 		Environment env1 = new Environment(3,1,3,4);
 		//creating the specific Hanoi Problem
@@ -195,7 +196,7 @@ public class MainProgram {
 		 * Destination peg: 3
 		 * 
 		 */
-		System.out.println("\n3 pegs and 6 disks");
+		/*System.out.println("\n3 pegs and 6 disks");
 		Environment env2 = new Environment(3,1,3,6);
 		HanoiProblem hanoiProblem2 = new HanoiProblem(3,6);
 		hanoiProblem2.addInitialState(env2);
@@ -214,7 +215,7 @@ public class MainProgram {
 		DFSpreviousTime = System.currentTimeMillis();
 		hanoiProblem2.solve(depth);	
 		DFSduration = System.currentTimeMillis() - DFSpreviousTime;
-		System.out.println("DFS duration: "+ DFSduration);
+		System.out.println("DFS duration: "+ DFSduration);*/
 		
 		/*
 		 *First test:
@@ -225,7 +226,7 @@ public class MainProgram {
 		 * Destination peg: 3
 		 * 
 		 */
-		System.out.println("\n4 pegs and 6 disks");
+		/*System.out.println("\n4 pegs and 6 disks");
 		Environment env3 = new Environment(4,1,3,6);
 		HanoiProblem hanoiProblem3 = new HanoiProblem(4,6);
 		hanoiProblem3.addInitialState(env3);
@@ -244,7 +245,7 @@ public class MainProgram {
 		DFSpreviousTime = System.currentTimeMillis();
 		hanoiProblem3.solve(depth);	
 		DFSduration = System.currentTimeMillis() - DFSpreviousTime;
-		System.out.println("DFS duration: "+ DFSduration);
+		System.out.println("DFS duration: "+ DFSduration);*/
 		
 		/*
 		 *First test:
@@ -255,7 +256,7 @@ public class MainProgram {
 		 * Destination peg: 4 (Destination peg changed to compare results)
 		 * 
 		 */
-		System.out.println("\n4 pegs and 6 disks");
+		/*System.out.println("\n4 pegs and 6 disks");
 		Environment env4 = new Environment(4,2,4,6);
 		HanoiProblem hanoiProblem4 = new HanoiProblem(4,6);
 		hanoiProblem4.addInitialState(env4);
@@ -274,7 +275,33 @@ public class MainProgram {
 		DFSpreviousTime = System.currentTimeMillis();
 		hanoiProblem4.solve(depth);	
 		DFSduration = System.currentTimeMillis() - DFSpreviousTime;
-		System.out.println("DFS duration: "+ DFSduration);
+		System.out.println("DFS duration: "+ DFSduration);*/
+		
+		System.out.println("3 Pegs, 6 disks: ");
+		Environment env5 = new Environment(3,1,3,6);
+		HanoiProblem hanoiProblem5 = new HanoiProblem(3,6);
+		hanoiProblem5.addInitialState(env5);
+		
+		System.out.println("BestFS(Heuristic1): ");
+		BestFS best = new BestFS(new Heuristic1());
+		hanoiProblem5.solve(best);
+		
+		System.out.println("BestFS(Heuristic2): ");
+		best = new BestFS(new Heuristic2());
+		hanoiProblem5.solve(best);
+		
+		System.out.println("4 Pegs, 6 Disks: ");
+		Environment env6 = new Environment(4,1,4,6);
+		HanoiProblem hanoiProblem6 = new HanoiProblem(4,6);
+		hanoiProblem6.addInitialState(env6);
+		
+		System.out.println("BestFS(Heuristic1): ");
+		BestFS best2 = new BestFS(new Heuristic1());
+		hanoiProblem6.solve(best2);
+		
+		System.out.println("BestFS(Heuristic2): ");
+		best2 = new BestFS(new Heuristic2());
+		hanoiProblem6.solve(best2);
 	}
 	
 }
