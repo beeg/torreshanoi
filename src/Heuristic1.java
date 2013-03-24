@@ -1,6 +1,5 @@
 import es.deusto.ingenieria.is.search.algorithms.Node;
 import es.deusto.ingenieria.is.search.algorithms.heuristic.EvaluationFunction;
-import es.deusto.ingenieria.is.search.algorithms.heuristic.HeuristicSearchMethod;
 
 
 public class Heuristic1 extends EvaluationFunction{
