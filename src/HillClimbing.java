@@ -38,20 +38,20 @@ public class HillClimbing extends HeuristicSearchMethod{
 		bestSuccessor.setH(this.getEvaluationFunction().calculateH(bestSuccessor));
 		//all other succesors
 		if(bestSuccessor!=null){
-		for (Operator operator : problem.getOperators()){
-			successorState = operator.apply(currentState);
-			if (successorState!= null) {
-				successorNode = new Node(successorState);
-				successorNode.setOperator(operator.getName());
-				successorNode.setParent(node);
-				successorNode.setDepth(node.getDepth() + 1);
-				successorNode.setH(this.getEvaluationFunction().calculateH(successorNode));
-				if(successorNode.getH()<bestSuccessor.getH()){
-					bestSuccessor=successorNode;
+			for (Operator operator : problem.getOperators()){
+				successorState = operator.apply(currentState);
+				if (successorState!= null) {
+					successorNode = new Node(successorState);
+					successorNode.setOperator(operator.getName());
+					successorNode.setParent(node);
+					successorNode.setDepth(node.getDepth() + 1);
+					successorNode.setH(this.getEvaluationFunction().calculateH(successorNode));
+					if(successorNode.getH()<bestSuccessor.getH()){
+						bestSuccessor=successorNode;
+					}
 				}
 			}
 		}
+		return bestSuccessor;
 	}
-	return bestSuccessor;
-}
 }
