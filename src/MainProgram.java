@@ -12,7 +12,7 @@ public class MainProgram {
 	
 	public static void main(String[] args)	{	
 		//Comparison between BestFS with Heuristic 1 and Heuristic 2
-		/*System.out.println("3 Pegs, 6 disks: ");
+		System.out.println("3 Pegs, 6 disks: ");
 		Environment env1 = new Environment(3,1,3,6);
 		HanoiProblem hanoiProblem1 = new HanoiProblem(3,6);
 		hanoiProblem1.addInitialState(env1);
@@ -119,7 +119,7 @@ public class MainProgram {
 		hanoiProblem4.solve(depth2);
 		//Getting the total amount of time that the system has made use of
 		DFSduration = System.currentTimeMillis() - DFSpreviousTime;
-		System.out.println("DFS total duration: "+ DFSduration);*/
+		System.out.println("DFS total duration: "+ DFSduration);
 		
 		//Comparison between HillClimbig with Heuristic 1 and Heuristic 2
 		System.out.println("3 Pegs, 6 disks: ");
@@ -146,21 +146,21 @@ public class MainProgram {
 		System.out.println("Hill Climbing Heuristic 2 total duration: "+ HillCH2duration);
 		
 		System.out.println("BFS: ");
-		BreadthFS breadth2 = BreadthFS.getInstance();
+		BreadthFS breadth3 = BreadthFS.getInstance();
 		//Save the system time before the algorithm is executed
-		Long BFSpreviousTime = System.currentTimeMillis();
-		hanoiProblem5.solve(breadth2);
+		BFSpreviousTime = System.currentTimeMillis();
+		hanoiProblem5.solve(breadth3);
 		//Getting the total amount of time that the system has made use of
-		Long BFSduration = System.currentTimeMillis() - BFSpreviousTime;
+		BFSduration = System.currentTimeMillis() - BFSpreviousTime;
 		System.out.println("BFS total duration: "+ BFSduration);
 		
 		System.out.println("DFS: ");
-		DepthFS depth2 = DepthFS.getInstance();
+		DepthFS depth3 = DepthFS.getInstance();
 		//Save the system time before the algorithm is executed
-		Long DFSpreviousTime = System.currentTimeMillis();
-		hanoiProblem5.solve(depth2);
+		DFSpreviousTime = System.currentTimeMillis();
+		hanoiProblem5.solve(depth3);
 		//Getting the total amount of time that the system has made use of
-		Long DFSduration = System.currentTimeMillis() - DFSpreviousTime;
+		DFSduration = System.currentTimeMillis() - DFSpreviousTime;
 		System.out.println("DFS total duration: "+ DFSduration);
 		
 		
@@ -188,19 +188,19 @@ public class MainProgram {
 		System.out.println("Hill Climbing Heuristic 2 total duration: "+ HillCH2duration);
 		
 		System.out.println("BFS: ");
-		BreadthFS breadth3 = BreadthFS.getInstance();
+		BreadthFS breadth4 = BreadthFS.getInstance();
 		//Save the system time before the algorithm is executed
 		BFSpreviousTime = System.currentTimeMillis();
-		hanoiProblem5.solve(breadth3);
+		hanoiProblem5.solve(breadth4);
 		//Getting the total amount of time that the system has made use of
 		BFSduration = System.currentTimeMillis() - BFSpreviousTime;
 		System.out.println("BFS total duration: "+ BFSduration);
 		
 		System.out.println("DFS: ");
-		DepthFS depth3 = DepthFS.getInstance();
+		DepthFS depth4 = DepthFS.getInstance();
 		//Save the system time before the algorithm is executed
 		DFSpreviousTime = System.currentTimeMillis();
-		hanoiProblem5.solve(depth3);
+		hanoiProblem5.solve(depth4);
 		//Getting the total amount of time that the system has made use of
 		DFSduration = System.currentTimeMillis() - DFSpreviousTime;
 		System.out.println("DFS total duration: "+ DFSduration);
