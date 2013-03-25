@@ -4,7 +4,7 @@ import SearchFormulation.Environment;
 import es.deusto.ingenieria.is.search.algorithms.Node;
 import es.deusto.ingenieria.is.search.algorithms.heuristic.EvaluationFunction;
 
-
+//Disks that aren't at the destination
 public class Heuristic2 extends EvaluationFunction{
 
 	@Override
@@ -16,9 +16,9 @@ public class Heuristic2 extends EvaluationFunction{
 	public double calculateH(Node arg0) {
 		Environment e = (Environment)arg0.getState();
 		double disks=0;
-		for (int i=0;i<e.getPegs().size();i++){
-			if(!e.getPegs().get(i).equals(e.getDestination())){
-				disks=disks+e.getPegs().get(i).getDisks().size();
+		for (int i=0;i<e.getNumPegs();i++){
+			if(!e.getPeg(i).equals(e.getDestination())){
+				disks=disks+e.getPeg(i).getSize();
 			}
 		}
 		return disks;

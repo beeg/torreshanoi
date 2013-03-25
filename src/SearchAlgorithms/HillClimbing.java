@@ -16,9 +16,10 @@ public class HillClimbing extends HeuristicSearchMethod{
 
 	public Node search(Problem problem, State initialState) {
 		Node currentNode = new Node(initialState);
+		currentNode.setH(this.getEvaluationFunction().calculateH(currentNode));
 		boolean local_best =false;
 		Node bestSuccessor; 
-		while(local_best){
+		while(!local_best){
 			bestSuccessor = this.expand(currentNode,problem);
 			if(currentNode.getH()<=bestSuccessor.getH()){
 				local_best=true;
@@ -32,23 +33,19 @@ public class HillClimbing extends HeuristicSearchMethod{
 		Node successorNode = null;
 		State currentState = node.getState();
 		State successorState = null;
-		//first succersor
-		Node bestSuccessor = new Node(problem.getOperators().get(0).apply(currentState));
-		bestSuccessor.setOperator(problem.getOperators().get(0).getName());
-		bestSuccessor.setParent(node);
-		bestSuccessor.setDepth(node.getDepth() + 1);
-		bestSuccessor.setH(this.getEvaluationFunction().calculateH(bestSuccessor));
+		//first succesor
+		Node bestSuccessor = null;
 		//all other succesors
-		if(bestSuccessor!=null){
-			for (Operator operator : problem.getOperators()){
-				successorState = operator.apply(currentState);
-				if (successorState!= null) {
+		if(currentState!=null){
+			for (Operator operator : problem.getOperators()){		
+				successorState = operator.apply(currentState);				
+				if (successorState!= null) {									
 					successorNode = new Node(successorState);
 					successorNode.setOperator(operator.getName());
 					successorNode.setParent(node);
 					successorNode.setDepth(node.getDepth() + 1);
 					successorNode.setH(this.getEvaluationFunction().calculateH(successorNode));
-					if(successorNode.getH()<bestSuccessor.getH()){
+					if(bestSuccessor==null || successorNode.getH()<bestSuccessor.getH()){
 						bestSuccessor=successorNode;
 					}
 				}
