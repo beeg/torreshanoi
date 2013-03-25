@@ -113,7 +113,7 @@ public class HanoiProblem extends Problem	{
 	/**
 	 * @param arg0 Any search method (BFS, DFS ...)
 	 * 
-	 * Depending the search method it use one algorithim or other. 
+	 * Resolves the problem with the algorithm passed by parameter.
 	 */
 	public void solve(SearchMethod arg0)	{
 		if(arg0!=null)	{
@@ -122,7 +122,7 @@ public class HanoiProblem extends Problem	{
 			ArrayList<String> path = new ArrayList<String>();
 			//Solution path 
 			arg0.solutionPath(node,path);
-			//Creating a solution log (all moves)
+			//Creating a solution log (every movement)
 			arg0.createSolutionLog(path);
 		}
 	}
