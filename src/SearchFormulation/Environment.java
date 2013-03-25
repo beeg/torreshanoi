@@ -1,5 +1,10 @@
+package SearchFormulation;
+
 import java.util.ArrayList;
 import java.util.Stack;
+
+import BaseElements.Disk;
+import BaseElements.Peg;
 
 import es.deusto.ingenieria.is.search.formulation.State;
 

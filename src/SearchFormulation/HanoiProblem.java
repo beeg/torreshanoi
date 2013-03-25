@@ -1,5 +1,6 @@
-import java.util.ArrayList;
+package SearchFormulation;
 
+import java.util.ArrayList;
 import es.deusto.ingenieria.is.search.algorithms.Node;
 import es.deusto.ingenieria.is.search.algorithms.SearchMethod;
 import es.deusto.ingenieria.is.search.formulation.Operator;

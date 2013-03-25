@@ -1,3 +1,6 @@
+package SearchFormulation;
+import BaseElements.Disk;
+import BaseElements.Peg;
 import es.deusto.ingenieria.is.search.formulation.Operator;
 import es.deusto.ingenieria.is.search.formulation.State;
 

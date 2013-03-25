@@ -1,4 +1,6 @@
+package BaseElements;
 import java.util.Stack;
+
 
 
 public class Peg implements Cloneable{
